@@ -1,7 +1,7 @@
 version: "3"
 services:
   es1:
-    image: elasticsearch:latest
+    image: elasticsearch:6.7.0
     container_name: es1
     expose:
       - 9200
@@ -14,7 +14,7 @@ services:
       - "9300:9300"
     restart: always
   kibana:
-    image: kibana:latest
+    image: kibana:6.7.0
     container_name: kibana
     ports:
       - "5601:5601"
