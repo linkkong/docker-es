@@ -1,5 +1,4 @@
-FROM elasticsearch:6.5.4
+FROM elasticsearch:6.7.0
 
-RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
- 
-EXPOSE 9200
+COPY elasticsearch-analysis-ik-6.7.0.zip /ik.zip
+RUN elasticsearch-plugin install -b file:///ik.zip
