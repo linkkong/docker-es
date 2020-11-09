@@ -1,9 +1,9 @@
 version: "3"
 services:
   es1:
-    build: 
-      context: .
-    # image: elasticsearch:6.7.0
+    # build: 
+    #   context: .
+    image: elasticsearch:7.9.3
     container_name: es1
     expose:
       - 9200
@@ -15,8 +15,12 @@ services:
       - "9200:9200"
       - "9300:9300"
     restart: always
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
   kibana:
-    image: kibana:6.7.0
+    image: kibana:7.9.3
     container_name: kibana
     ports:
       - "5601:5601"
